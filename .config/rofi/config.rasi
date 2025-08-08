@@ -1,0 +1,38 @@
+/* config.rasi file */
+configuration {
+	modi:                       "drun,run,window";
+    show-icons:                 false;
+    display-drun:               "Apps >";
+    display-run:                ">>>";
+    display-window:             "";
+    font: "Noto Sans 14";
+}
+
+@theme "/dev/null"
+
+* {
+bg: #2C0B1F;
+background-color: @bg;
+bg-alt: #A3076F;
+fg-alt: #67FC98;
+fg: #8CF7AF;
+text-color: #F3F2F3;
+
+border: 0;
+margin: 0;
+padding: 0;
+spacing: 0;
+}
+
+window{
+width: 40%;
+}  
+
+element {
+    border:  0;
+    padding: 1px ;
+}
+element-text {
+    background-color: inherit;
+    text-color:  #F3F2F3;
+}

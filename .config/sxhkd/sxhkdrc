@@ -1,0 +1,125 @@
+# bspwm hotkeys
+#
+#quit bspwm and kill the bar
+
+# close a window(app)
+super + q
+	bspc node -c
+# kill window(app)
+super + alt + q
+	bspc node -k	
+	
+#Reload sxhkd
+super + shift + r
+			killall -SIGUSR1 sxhkd
+#Adjust the split ratios of the tree of the selected desktop so that all windows occupy the same area.
+#super + b
+#	bspc desktop -B
+#
+# wm independent hotkeys
+#the mode switch is the AltGr key right of the spacebar key but can use super (win)if you want
+# super=the windows key
+#Reload sxhkd
+		
+# Terminal
+super + t
+        kitty
+
+# File manager
+super + e
+        pcmanfm
+
+# Browser
+super + i
+        chromium
+        
+#  Geany
+super + g
+		geany
+
+# Menu  using Rofi to list apps installed
+super + r
+        rofi -show drun	
+# Rofi to choose window
+super + w
+		rofi -show window
+# simpler bangs script
+super + b
+		"/home/delboy/.bin/simplerbangs"
+# other script chooser
+alt + b
+		"/home/delboy/.bin/scriptsmenu.sh"   
+		
+super + n
+		"/home/delboy/.bin/rofi-notes"
+		   
+# lower Brightness
+super + shift + d
+		brightnessctl -e4 -n2 set 5%-
+# Increase Brightness
+super + shift + u
+		brightnessctl -e4 -n2 set 5%+
+#===================================================
+# BSPWM STUFF	
+
+# Send to desktop and follow
+super + shift + {1-9,0}
+    bspc node -d '^{1-9,10}' --follow
+    
+# focus the given desktop
+super + {1-9,0}
+	bspc desktop -f '^{1-9,10}'
+    
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+#mode_switch + m
+#	startmpd-onlyifnotrunning
+
+#############
+# bring apps to top ############
+#below works in Snapwm + DWM but not in Openbox
+#mode_switch + t
+#	   /home/dka/bin/xdotool-show-app.sh urxvt
+# below works in dwm (but you have to press it twice) but not in snapwm think it is something to do with Sublime
+#mode_switch + s
+#	   /home/dka/bin/xdotool-show-app.sh Sublime_text
+# This works better than above though, you only have to press the combo once-doesn't work on openbox-though or Snapwm
+#mode_switch + s
+#	xdotool search "Sublime_text" windowactivate &> /dev/null
+#THis works in DWM + Openbox
+#mode_switch + u
+#	xdotool search "URxvt" windowactivate &> /dev/null
+#focus geany - working with DWM not with Snapwm
+#mode_switch + control + g
+#	xdotool search "Geany" windowactivate &> /dev/null
+# again works with dwm but not snapwm and the xdotool show appscript doesn'twork right with spacfm
+#Focus Spacefm
+#mode_switch + control + h
+#dotool search "Spacefm" windowactivate &> /dev/null
+#	/home/dka/bin/xdotool-show-app.sh Spacefm
+##################
+
+#below were for JWM don't work with DWM
+#mode_switch + 5
+#	wmtiler.sh -v
+#mode_switch + 6
+#	wmtiler.sh -h
+
+#super + s
+#      xdotool getactivewindow windowmove 5 5
+#Volume control#########################
+
+#wmjump-have to make sure wmjump is running first and only works with stumpwm and openbox not in i3
+#when the box appears press the number of the app you want 1,2,3 ect
+#mode_switch + k
+#				wmjump --rich
+#mode_switch + j
+#				wmjump --rich --current
+
+
+#focus geany
+#this would do the same only using i3 message
+#shift + alt + g
+#	i3-msg "[class=Geany] focus"
+

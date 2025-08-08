@@ -1,0 +1,5 @@
+https://github.com/agryphus/nixrice/tree/master/misc/.config/yazi
+links to his yazi dotfiles
+
+another video abt it
+https://www.youtube.com/watch?v=iKb3cHDD9hw&list=WL&index=2

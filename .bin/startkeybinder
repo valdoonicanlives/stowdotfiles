@@ -1,0 +1,6 @@
+#!/bin/sh
+
+
+pkexec swhks -c "/home/delboy/.config/swhkd/swhkdrc" &
+
+pkexec swhkd -c "/home/delboy/.config/swhkd/swhkdrc"

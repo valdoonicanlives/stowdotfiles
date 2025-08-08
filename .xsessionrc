@@ -1,0 +1,16 @@
+# The Autostart File #
+
+# Global
+#sxhkd &  
+#set keyboard layout  
+#setxkbmap -layout gb
+# fix cross for a pointer showing, need to install xorg-xsetroot
+#xsetroot -cursor_name left_ptr &
+# set a solid background
+#hsetroot -solid "#000000" &
+# Panel
+#polybar -c /home/delboy/.config/polybar/config &
+#bspwm &
+#/home/delboy/.config/polybar/launch.sh &
+# bspwm startup script
+#/home/delboy/.bin/start-bspwm &

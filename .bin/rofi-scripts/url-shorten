@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# url shortner
+# needs xclip installed
+#1. copy an url to the X clipboard, run the script (e.g. through a hotkey) and immediately paste the tinyurl again, or
+#2. pass an URL as the first and only argument and tadaa, there is the tinified url on STDOUT (and also in the clipboard
+# author: Philip Stark
+# desc:  pass an url as the first and only argument to make it tiny or 
+#        leave it away and it takes the content of the clipboard by
+#        calling xclip. 
+
+echo "copy url to clipboard first"  | rofi -dmenu -p "please press ENTER" 
+if [ "$1" = "" ]; then
+  tinyurl=$(curl http://tinyurl.com/api-create.php?url=$(xclip -selection clipboard -o) 2> /dev/null)
+  echo $tinyurl;
+  echo $tinyurl | xclip -selection clipboard -i;
+else
+  url=$1;
+  tinyurl=$(curl http://tinyurl.com/api-create.php?url=${url} 2> /dev/null)
+  echo $tinyurl;
+  echo $tinyurl | xclip -selection clipboard -i;
+fi

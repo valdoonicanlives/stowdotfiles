@@ -1,0 +1,44 @@
+# A Keybinds for Launch The Applications #
+
+# Quit
+super + shift + q
+        pkill xfwm4
+        
+# Reload sxhkd config
+super + shift + r
+        pkill -USR1 -x sxhkd
+
+
+# Lockscreen
+super + Delete
+        xtrlock
+
+# Terminal
+super + t
+        alacritty
+
+# File manager
+super + e
+        pcmanfm
+
+# Browser
+super + i
+        chromium
+
+# Menu
+super + r
+        rofi
+
+# Screenshots
+super + s
+        xfce4-screenshooter
+
+# Audio player
+super + m
+        alacritty -e ncmpcpp
+
+# Audio visualizer
+#super + shift + m
+#        alacritty -e cava
+
+

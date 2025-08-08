@@ -1,0 +1,4 @@
+#!/bin/bash
+st -e "~/.bin/fzfscriptmenu"
+#selected=$(ls ~/.config/scriptsmenu/ | fzf)&& bash ~/.config/scriptsmenu/$selected
+#ls ~/.config/scriptsmenu/ | fzf | xargs -I{} st -e {}

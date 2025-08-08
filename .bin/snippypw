@@ -1,0 +1,48 @@
+#!/bin/bash
+#
+#
+# To use:
+# 1. Create a file in your home directory called ".snippyrc".(I made a file called .snippy1line-rc and put it in .snippy )
+#
+# 2. The format of the file is shown below:
+#
+#        [tag] text_to_paste
+#
+#    Where "[tag]" starts in column 1. For example:
+#
+#        [hw] Hello, world!
+#        [wombatSmilie] [img]http://nualeargais.ie/pictiuir/emoticons/wombatSmilie.gif[/img]
+#
+# 3. Bind a convenient key combination to this script.
+#
+#    TIP: If you're using XMonad, add something like this to xmonad.hs
+#      ((mod4Mask, xK_s), spawn "/path/to/snippy")
+#
+###############################################################################################
+#this will decrypt the pass file and so remove the .cpt extention
+ccrypt --decrypt --key kered00 /home/delboy/.snippy/snippypwd.cpt
+CONFIG=${HOME}/.snippy/snippypwd
+# the dmenu args was "-b" but took it out as prefer dmenu at top of screen
+ROFI='rofi -dmenu'
+#DMENU_ARGS=""
+XSEL_ARGS="--clipboard --input"
+
+# Display the menu and get the selection
+SELECTION=`sed 's/\].*/]/' ${CONFIG} | $ROFI`
+#SELECTION=`sed 's/\].*/]/' ${CONFIG} | /usr/bin/dmenu ${DMENU_ARGS}`
+
+# Strip out the square brackets...
+PATTERN=`echo ${SELECTION} | tr -d "[]"`
+
+# ...and put them back in, escaped with a backslash.
+# Get the text associated with the selection.
+TEXT=`grep "\[${PATTERN}\]" ~/.snippy/snippypwd | sed "s/\[${PATTERN}\] //"`
+
+if [ "${TEXT}" ]; then
+  # Put the selected string (without the trailing newline) into the paste buffer.
+  echo -n ${TEXT} | xsel ${XSEL_ARGS}
+  # Paste into the current application.
+  #xdotool key ctrl+v
+  # lastly encrypt the file again
+  ccrypt --encrypt --key kered00 /home/delboy/.snippy/snippypwd
+fi

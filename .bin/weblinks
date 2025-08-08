@@ -1,0 +1,5 @@
+#!/bin/sh
+
+choice=$(cat ~/.config/web/weblinks | dmenu -l 7 -p "Choose Bookmark: ")
+[ -z "$choice" ] && exit 0 || echo $choice | xargs chromium
+

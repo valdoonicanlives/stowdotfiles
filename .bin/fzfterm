@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+xterm -name 'floating xterm' -e "fzf $* < /home/delboy/.bin"

@@ -1,0 +1,19 @@
+#!/usr/bin/bash
+
+#yeahconsole urxvt -e tmux &
+#sleep 0.6
+#/home/dka/.config/bspwm/start-trayer.sh &
+## Start Clipboard manager
+#clipit &
+#sleep 0.6
+#easystroke &
+#sleep 1
+#volwheel &
+#sleep 0.6
+#cherrytree  '/home/dka/.cherry/General-Database.ctb' &
+#sleep 0.6
+#nm-applet &
+#sxhkd -c '/home/delboy/.config/sxkd/sxhkdrc' &
+#sleep 1
+# lastly run bspwm
+exec bspwm

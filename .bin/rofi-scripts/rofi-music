@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# a simple menu to select and play a locally stored music using rofi
+
+BASE="/home/dka/music/shared-music/"
+
+PLAYER="mpv --force-window --on-all-workspaces --no-video"
+#PLAYER=$(which mplayer)
+#PLAYER=$(which mpv)
+#PLAYER=$(which urxvt -e cmus)
+
+S=$(find ${BASE} -maxdepth 1 -type d -printf "%P\n" \
+    | sort | rofi -dmenu -p "select a music folder > ")
+
+E=$(find ${BASE}/${S} -iname "*.mp3" -o -iname "*.wav" -o -iname "*.wma" \
+    | sort | awk -F/ '{print $NF}' | rofi -dmenu -p "[${S}] > ")
+
+${PLAYER} "${BASE}/${S}/${E}"
+#below works too
+#mpv --force-window --on-all-workspaces "${BASE}/${S}/${E}"
+

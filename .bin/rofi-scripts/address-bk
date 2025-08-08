@@ -1,0 +1,68 @@
+#!/usr/bin/env python2
+# Author: Crouse
+# A Simple Python Contacts Book v2
+
+import os
+
+# Full path (unless in same dir)to the file containing the data - Adjust to your needs.
+addressbook = "/home/dka/bin/rofi-scripts/addressbk.txt"
+
+# Write and Search functions
+def WriteEntry_():
+    name = raw_input("        Enter name: ")
+    email = raw_input("        Enter email: ")
+    phone = raw_input("        Enter phone: ")
+    f=open(addressbook, 'a')
+    f.write(name + "    " + email + "    " + phone + '\n')
+#    f.write(name + "    " + email + '\n')
+    f.close()
+    print "\n"
+    print "        Added: " + name + "   " + email + " to the contacts list.\n"
+
+
+def SearchEntry_():
+    os.system(['clear','cls'][os.name == 'nt'])
+    print "-------------------------------------------\n"
+    print "------ A Simple Python Contacts Book    ------\n"
+    print "-------------------------------------------\n\n"
+    searchfor= raw_input("        Enter search term: ")
+    print "\n"
+    print "--------- RESULTS --------\n"
+    searchforlower=searchfor.lower()
+    try:
+        f=open(addressbook, 'r')
+        for line in f:
+            if line.lower().startswith(searchforlower):
+                print line.rstrip("\n")
+        f.close()
+    except:
+        print "Sorry - There doesn't appear to be a database yet."
+        print "Please create an entry first and then retry searching."
+    print "--------------------------\n"
+
+ # The Menu
+while True:
+        os.system(['clear','cls'][os.name == 'nt'])
+        # Menu Displayed
+        print "-------------------------------------------\n"
+        print "------ A Simple Contacts Book v2 ------\n"
+        print "-------------------------------------------\n"
+        selection = raw_input("\n\
+        s) Search Addressbook\n\
+        a) Add to Addressbook\n\
+        q) Quit\n\n\
+        What would you like to do?  ")
+        print"\n"
+        # Returned Answer acted upon.
+        if selection == "s":
+                SearchEntry_()
+        elif selection == "a":
+                WriteEntry_()
+        elif selection == "e":
+                break
+        elif selection == "q":
+                break
+        else:
+                print "        Not a valid Choice."
+        raw_input("        Hit any key to continue") 
+exit

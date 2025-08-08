@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# This script uses dmenu to search for videos on YouTube.
+
+# Prompt the user for a Youtube query using dmenu
+youtube_query=$(echo "" | dmenu -p "Enter Youtube query:")
+
+# Check if the user entered a query
+if [ -z "$youtube_query" ]; then
+    echo "No YouTube query entered. Exiting."
+    exit 1
+fi
+
+# Encode the query for URL safety (e.g., spaces to +)
+encoded_query=$(echo "$youtube_query" | sed 's/ /+/g')
+
+# Construct the Youtube URL
+youtube_url="https://www.youtube.com/results?search_query=$encoded_query"
+
+# Open the URL in the default web browser
+xdg-open "$youtube_url" &
+
+echo "Opening Youtube for \"$youtube_query\"..."

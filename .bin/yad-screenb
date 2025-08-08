@@ -1,0 +1,24 @@
+TITLE="Run command" 
+TEXT="\nEnter Choice:\n" 
+rcmd=$(yad --width=500 --center --window-icon="gtk-execute" --name="${0##/}" --title="$TITLE" --text="$TEXT" --image="gtk-execute" --editable --entry --rest $HISTFILE)
+
+[-z "$rcmd" ] && exit 0
+
+# run command 
+case $rcmd in
+        http://*|https://*|ftp://*)
+                xdg-open $rcmd & 
+                ;;
+        60%://*)
+                brightnessctl s 60% $rcmd & 
+                ;;
+        80%://*)
+                eval $XTERM -e "brightnessctl s 80%" & 
+                ;;
+        telnet*|ssh*)
+                eval $XTERM -e "$rcmd" & 
+                ;;
+        *)
+                eval $rcmd & 
+                ;;
+esac

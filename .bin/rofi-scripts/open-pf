@@ -1,0 +1,6 @@
+#!/bin/bash
+
+#this will decrypt the pass file and so remove the .cpt extention
+ccrypt --decrypt --key kered00 /home/dka/.snippy/snippypwd.cpt
+sleep 1
+geany /home/dka/.snippy/snippypwd

@@ -1,0 +1,12 @@
+#!/bin/bash
+# name of script  yt18
+DESTINATION="~/YouTube/%(title)s.%(ext)s"
+#
+
+
+echo "highlight the url in browsers bar first"  | rofi -dmenu -p "please press ENTER"
+# 
+youtube-dl --continue --format 18 -o "${DESTINATION}" `xclip -o`
+
+
+exit

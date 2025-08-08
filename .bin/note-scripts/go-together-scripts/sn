@@ -1,0 +1,15 @@
+#! /usr/bin/sh
+
+#for checking the notes you can use this script it is used with the noter scipt
+#
+#
+if [ -z $1 ]
+then
+	tac ~/noter_notes.txt
+	exit 1
+else
+	grep -i "$*" ~/noter_notes.txt
+fi
+# call this script sn and callit like this
+# sn beer (this will output all notes iwth beer)
+# sn  shows all with most recent first

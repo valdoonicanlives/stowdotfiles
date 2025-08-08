@@ -1,0 +1,24 @@
+#!/bin/bash
+# Example recorddesktop output.avi
+echo "Press q to stop recording"
+cd /home/delboy/Videos/Screencasts/
+STR="$1"
+FILENAME="$STR.avi"
+
+#if [ $STR ]; then
+#FILENAME="$@"
+#else
+#echo "No file name specified, using out.avi"
+#FILENAME="out.avi"
+#fi
+
+#FILENAME="$(echo $FILENAME | sed 's/\ /\\ /g')";
+
+echo "Recording into $FILENAME ...";
+
+ffmpeg -f alsa -i default -f x11grab -s 1280x720 -framerate 24  -i :0.0 -b:v 6384k "$FILENAME"
+# the -b:v 6384k  is the quality
+# below works too
+ # ffmpeg -f x11grab -s 1280x720 -framerate 25 -i :0.0 /tmp/out.mpg
+ # does this one below, yes
+ # ffmpeg -f alsa -i default -f x11grab -r 24 -s `xrandr --prop 2> /dev/null | awk '/\*/ {print $1}'` -i :0.0 "$FILENAME"

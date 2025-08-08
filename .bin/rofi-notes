@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+## define your terminal in "TERM=<your-terminal>
+## 
+## the script uses rofi (alised to dmenu in my setup), to use dmenu just replace "rofi -dmenu" with "dmenu" and remove "-location, -lines", etc option upto & keeping -p
+## you will need to create "~/.rofinotes-store" folder to store your notes.
+TERM=st
+
+shopt -s nullglob globstar
+
+
+
+fix=${NOTES_DIR-~/notes}
+notes_files=( "$fix"/**/*.txt )
+notes_files=( "${notes_files[@]#"$fix"/}" )
+notes_files=( "${notes_files[@]%.txt}" )
+
+echo -e "notes view\nnotes new/edit\nnotes remove" | rofi -dmenu -location 1 -lines 5 -width 100 -p SELECT: > /tmp/x
+
+grep -o "notes view" < /tmp/x && printf '%s\n' "${notes_files[@]}" | rofi -dmenu "$@" -location 1 -lines 10 -width 100 -p Notes: > /tmp/a && $TERM -e nvim ~/notes/$(< /tmp/a).txt && exit
+
+grep -o "notes new" < /tmp/x && printf '%s\n' "${notes_files[@]}" | rofi -dmenu -location 1 -lines 10 -width 100 -p Notes: > /tmp/a && $TERM -e nvim ~/notes/$(< /tmp/a).txt && exit
+
+grep -o "notes remove" < /tmp/x && printf '%s\n' "${notes_files[@]}" | rofi -dmenu "$@" -location 1 -lines 10 -width 100 -p Notes: > /tmp/a && $TERM -e rm ~/notes/$(< /tmp/a).txt 2>/dev/null && exit

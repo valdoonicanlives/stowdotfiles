@@ -1,0 +1,76 @@
+show keybindings for rofi
+
+;rp '/home/dka/bin/rofi-scripts/snippypw'"
+;open-pf
+;close-pf
+
+;watchit '/home/dka/bin/rofi-scripts/watchit'"
+
+;address-bk urxvt -e '/home/dka/bin/rofi-scripts/address-bk'"
+
+cherry-prv  cherrytree  '/home/dka/.cherry/cherryps.ctz'"
+
+;urlshorten  '/home/dka/bin/rofi-scripts/url-shorten'"
+
+radio4  urxvt -e '/home/dka/bin/radio4'"
+
+;rr   rofi -show run \"\${input}\""
+;rb"]="rofi-bookmarks \"\${input}\""
+;rn"]="rofi-notes \"\${input}\""
+
+
+;todo"]=" '/home/dka/bin/rofi-scripts/todo.sh'"
+
+;edit-todos"]="leafpad   '/home/dka/.rofi_todo'"
+
+;music"]="rofi-music \"\${input}\""
+
+suspend"]="rofi-suspend \"\${input}\""
+
+#apps and progs both work the same
+;apps"]=" '/home/dka/bin/rofi-scripts/rofi-appschoose'"
+;progs"]="  '/home/dka/bin/rofi-scripts/rofi-progs'"
+
+#for password retrieval	
+;snippypw"]=" '/home/dka/bin/rofi-scripts/snippypw'"
+
+#google maps
+;gmps"]="chromium --disk-cache-dir=/tmp/cache https://www.google.nl/maps/place/\" \${input}\""
+
+;wb"]="chromium --disk-cache-dir=/tmp/cache \"\${input}\""
+
+#google search
+;gs"]="chromium --disk-cache-dir=/tmp/cache www.google.com/search?q=\" \${input}\""
+
+;movie"]="chromium --disk-cache-dir=/tmp/cache http://www.imdb.com/find?q=\" \${input}\""
+
+;wiki"]="chromium --disk-cache-dir=/tmp/cache http://en.wikipedia.org/w/index.php?search=\" \${input}\""
+
+funny  ="leafpad  '/home/dka/text-files/funnysymbols.txt'"
+
+#file search
+fsearch"]="fsearch"
+
+#some programs
+qutebrowser"]="qutebrowser"
+leafpad"]="leafpad"
+keepassx"]="keepassx "
+cs5"]='/home/dka/bin/cs5-Portable'
+
+#Dirs
+
+.bin"]="spacefm -r '/home/dka/bin'"
+
+.downloads"]="spacefm -r '/home/dka/Downloads'"
+
+# WEB SITES
+wyt"]="chromium --disk-cache-dir=/tmp/cache http://www.youtube.com"
+hotmail"]='chromium --disk-cache-dir=/tmp/cache www.hotmail.com'
+
+# putting a # in front of the ones that call scripts
+#screenshot"]='/home/dka/bin/screenshot-scripts/myscreenshot.sh'
+edit ='edit-configs-and-scripts'
+#mounttemple"]='echo 0downy | encfs -S /media/ElementsA/new-temple/.new-temple_encfs /media/ElementsA/templemount/'
+#unmounttemple"]='fusermount -u  /media/ElementsA/templemount'
+#hmsignin"]='sleep 5s;xdotool type 'elwoode';sleep 0.5s;xdotool key 132;xdotool type 'hotmail.co.uk';xdotool key Tab;xdotool type 'hotmailkered0';xdotool key "Return"'
+

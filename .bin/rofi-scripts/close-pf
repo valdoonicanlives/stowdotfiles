@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#this will encrypt the pass file adding the .cpt extention
+ccrypt --encrypt --key kered00 /home/dka/.snippy/snippypwd
+

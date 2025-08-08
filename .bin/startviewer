@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /home/delboy/mygits/nsxiv/
+./nsxiv /home/delboy/Pictures

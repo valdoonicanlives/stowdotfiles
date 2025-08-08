@@ -1,0 +1,29 @@
+#!/usr/bin/bash
+
+/home/dka/.config/bspwm/start-trayer.sh &
+#trying it with bmpanel instead of simple panel and trayer
+#bmpanel2 --theme=noir &
+## Start Clipboard manager
+sleep 0.5
+clipit &
+#sleep 0.6
+#easystroke &
+sleep 0.6
+volwheel &
+sleep 0.6
+# want to start ranger in separate terminal now so removed below.
+#/usr/bin/yeahconsole -e /home/dka/bin/start-tmux &
+#/usr/bin/yeahconsole &
+
+sleep 0.6
+
+#sleep 0.6
+cherrytree  '/home/dka/.cherry/General-Database.ctb' &
+sleep 0.6
+nm-applet &
+sleep 0.5
+sxhkd -f 50 -c '/home/dka/.config/bspwm/sxhkdrc' &
+sleep 0.6
+
+bspwm
+

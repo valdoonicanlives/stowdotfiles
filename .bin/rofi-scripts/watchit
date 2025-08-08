@@ -1,0 +1,12 @@
+#!/bin/bash
+# name of script  watchit
+
+# Just highlight the url in the browsers bar then run this DK
+# type watchit in terminal and then CTRL c in terminal to stop it, or when exiting the video the script will stop too.
+#cvlc `xclip -o`  #this works so does using mpv below
+#echo "highlight the url in browsers bar first"
+echo "highlight the url in browsers bar first"  | rofi -dmenu -p "please press ENTER"
+mpv `xclip -o`
+# using vlc as I can also save the video using vlc
+#vlc `xclip -o`
+exit

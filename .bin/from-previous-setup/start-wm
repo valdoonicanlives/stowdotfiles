@@ -1,0 +1,61 @@
+#!/bin/env zsh
+# This is a sample .xinitrc file (to be executed with xinit or startx)
+
+# source the Xresources for the terminal
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
+# Ctrl-Alt-Backspace kills the X session
+setxkbmap -option terminate:ctrl_alt_bksp
+
+# sets your keyboard to 'us' keymap
+setxkbmap -model microsoft -layout gb
+xmodmap .Xmodmap &&
+pulseaudio --start
+# read Xmodmap file - please edit it first
+#xmodmap ~/.Xmodmap &
+#use hsetroot to set backgrnd color as xsetroot is over-written by compton if using it.
+hsetroot -solid "#393939" &
+#below to solve backlight problem
+xbacklight -inc 80 
+# call /usr/include/ulimit.h
+#ulimit -c unlimited &
+
+# helpful to have keycombos set - see also ~/.xbindkeysrc
+#xbindkeys -f ~/.xbindkeysrc &
+
+# set a solid background
+#xsetroot -solid "#1a1a1a" &
+
+# make the cursor point in the 'right' direction
+xsetroot -cursor_name left_ptr &
+
+# set a wallpaper
+#hsetroot -tile /usr/share/wallpapers/1.png &
+
+# this makes dual heads work better
+#vgascript &
+
+# got time?
+#sleep 2s && osd_clock -f  -*-terminus-*-*-*-*-12-*-*-*-*-*-*- -c brown -s 0 -r -t -o -8 &
+#below allows you to leave the X system back to the console with ctrl-alt-backspace
+setxkbmap -option terminate:ctrl_alt_bksp
+# candy
+#compton -bcCGf -i 0.8 -e 0.8 --no-fading-openclose &
+
+# nice tty-clock
+#sleep 3s && x-terminal-emulator -geometry 37x9-50+50 -e tty-clock &
+
+# authoring terminal ready -> change 'tmux' to your preferred writing tool
+# we give it enough sleep so that Xresources can be sourced, the wallpaper painted
+# and compton fully activated before opening the terminals windows.
+#sleep 4s && x-terminal-emulator -geometry 100x42+50+50 -e tmux &
+#sleep 4s && x-terminal-emulator -geometry 37x30-50+206 -e hnb &
+#sleep 4s && x-terminal-emulator -geometry 37x8-50-10 -e bbqalarm &
+#sleep 4s && x-terminal-emulator -geometry 100x8+50-10 &
+
+# execute session:
+# if you have consolekit and dbus running:
+#exec ck-launch-session dbus-launch --exit-with-session $1
+
+# else something like:
+exec $1

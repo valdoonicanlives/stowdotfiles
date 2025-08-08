@@ -1,0 +1,22 @@
+#!/bin/bash
+# https://bbs.archlinux.org/viewtopic.php?id=80145
+# Here is my launcher script again. Start with some entries in /home/dka/bin/rofi-scripts/applist - anything new entered will be added
+
+#
+newentry=$(rofi -dmenu -p choose: < /home/dka/bin/rofi-scripts/applist)
+[ -z $newentry ] && exit
+[ -z $( (cat  '/home/dka/bin/rofi-scripts/applist'; echo $newentry) | sort | uniq -d) ] && echo $newentry >>  '/home/dka/bin/rofi-scripts/applist'
+
+
+
+
+
+exec setsid $newentry
+#eval setsid setsid $newentry
+#----------------
+# try this version below if above not working well DK
+#!/bin/bash
+#newentry=$( dmenu -xs -i -l 5 -rs -ni -p ":" < ~/.mydmenuapplaunch)
+#[ -z "$newentry" ] && exit
+#[ -z "$( (cat ~/.mydmenuapplaunch; echo "$newentry") | sort | uniq -d)" ] && echo "$newentry" >> ~/.mydmenuapplaunch
+#eval setsid setsid $newentry

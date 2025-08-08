@@ -1,0 +1,12 @@
+#!/bin/sh
+exec /home/dka/bin/startup-apps &
+
+#wkline &
+
+sleep 1
+while true ; do
+bspwm -c /home/dka/.config/bspwm/bspwmrc -s "$PANEL_FIFO" -p W || break
+done
+
+
+#exec /usr/bin/bspwm-session

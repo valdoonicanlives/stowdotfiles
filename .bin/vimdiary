@@ -1,0 +1,7 @@
+#!/bin/bash
+# diary - script to facilitate making diary entries
+
+file=/home/delboy/notes/vimdiary
+date "+%n%m/%d/%y %H:%M:%S%n%n " >> $file
+st -e nvim -c '$|startinsert!' $file
+clear

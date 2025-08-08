@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+# a simple menu to select and play a locally stored tvshow using rofi
+# (c) 2015, avx
+# License: WTFPL
+
+BASE="${HOME}/dka/media/tvshows/en"
+PLAYER=$(which mplayer)
+
+S=$(find ${BASE} -maxdepth 1 -type d -printf "%P\n" \
+    | sort | rofi -dmenu -p "select a show > ")
+
+E=$(find ${BASE}/${S} -iname "*.mkv" -o -iname "*.mp4" -o -iname "*.avi" \
+    | sort | awk -F/ '{print $NF}' | rofi -dmenu -p "[${S}] > ")
+
+${PLAYER} "${BASE}/${S}/${E}"

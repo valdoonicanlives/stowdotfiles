@@ -1,0 +1,12 @@
+#!/bin/sh
+# put list of the progs you want to open in terminal in .dmenu_termapps
+
+termprogs=~/.dmenu_termapps
+
+APP=$(
+	dmenu "$@" < "$termprogs"
+)
+
+#grep -q -w "$APP" ~/.dmenu_termapps && urxvt -e $APP || echo $APP | ${SHELL:-"/bin/sh"} &
+
+" st -e $APP  &"

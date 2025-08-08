@@ -1,0 +1,10 @@
+#!/bin/sh
+#doesn't work of course
+# bring to front
+
+
+
+
+#below very simple version
+wmctrl -r 'myterm-toggle' -b toggle,remove
+#The -r option tells wmctrl the window title on which to act, and the -b option tells wmctrl either to add, remove or toggle

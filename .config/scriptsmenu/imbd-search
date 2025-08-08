@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# This script uses dmenu to search for movies on IMDb.
+
+# Prompt the user for a movie title or keyword using dmenu
+movie_query=$(echo "" | dmenu -p "Enter movie title or keyword (e.g., Inception):")
+
+# Check if the user entered a query
+if [ -z "$movie_query" ]; then
+    echo "No movie query entered. Exiting."
+    exit 1
+fi
+
+# Encode the query for URL safety (e.g., spaces to +)
+# This is important for search queries with multiple words
+encoded_query=$(echo "$movie_query" | sed 's/ /+/g')
+
+# Construct the IMDb search URL
+imdb_url="https://www.imdb.com/find/?q=$encoded_query"
+
+# Open the URL in the default web browser
+# You can replace 'xdg-open' with your preferred browser command if needed
+xdg-open "$imdb_url" &
+
+echo "Opening IMDb search for \"$movie_query\"..."

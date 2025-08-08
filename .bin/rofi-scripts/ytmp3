@@ -1,0 +1,11 @@
+#!/bin/bash
+# name of script  ytmp3
+DESTINATION="~/YouTube/music/%(title)s.%(ext)s"
+#
+
+
+echo "highlight the url in browsers bar first"  | rofi -dmenu -p "please press ENTER"
+#
+youtube-dlp -c --restrict-filenames --extract-audio --audio-quality 0 --audio-format mp3 -o "${DESTINATION}" `xclip -o`
+
+exit

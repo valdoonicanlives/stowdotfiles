@@ -1,0 +1,253 @@
+#!/usr/bin/env bash
+
+declare -A LABELS
+declare -A COMMANDS
+browser='chromium --disk-cache-dir=/tmp/cache'
+###
+# List of defined 'bangs'
+# ALL below are working DK
+# Dont need to use ; in front if you dont want
+###
+# below type rr to use rofi like dmenu to show apps
+
+COMMANDS["rr"]="rofi -show run \"\${input}\""
+LABELS["rr"]="rofi-run"
+
+####################################
+#---NOT WORKING SECTION -------------------------###
+#COMMANDS[";sr-dmenutest"]=" '/home/dka/bin/rofi-scripts/sr-dmenutest' \"\${input}\""
+#LABELS[";sr-dmenutest"]=""
+#
+
+#---END OF NOT WORKING SECTION --------------###
+####################################
+
+
+COMMANDS["soundefault"]=' pa-set 0'
+LABELS["sounddefault"]=""
+
+COMMANDS["soundusb"]="echo -e pa-set 1 "
+LABELS["soundusb"]=""
+
+#WORKING surfraw script
+COMMANDS["rb-sr"]=" '/home/dka/bin/rofi-scripts/rb-sr' \"\${input}\""
+LABELS["rb-sr"]=""
+
+COMMANDS["termapps"]=" '/home/dka/bin/rofi-scripts/dmenutermapps' \"\${input}\""
+LABELS["termapps"]=""
+
+COMMANDS["mpvusb"]='\home\dka\bin\pulseout "mpv usbspeakers"'
+LABELS["mpvusb"]=""
+
+COMMANDS["mpvdefault"]='\home\dka\bin\pulseout "mpv default"'
+LABELS["mpvdefault"]=""
+
+#COMMANDS["chromiumusb"]='bash exec \home\dka\bin\pulseout chromium usbspeakers'
+#LABELS["chromiumusb"]=""
+
+COMMANDS["chromiumusb"]="'cd /home/dka/bin/'; 'pulseout chromium usbspeakers'"
+LABELS["chromiumusb"]=""
+
+COMMANDS["chromiumdefault"]="'/home/dka/bin/rofi-scripts/chromium-default"
+LABELS["chromiumdefault"]=""
+
+#COMMANDS["chromiumdefault"]="urxvt -e pulseout chromium default"
+#LABELS["chromiumdefault"]=""
+#############
+COMMANDS["rb"]=" '/home/delboy/bin/rofi-scripts/rofi-bookmarks' \"\${input}\""
+LABELS["rb"]="rofi-bookmarks"
+
+COMMANDS["dc"]="'/home/dka/bin/startdc'"
+LABELS["dc"]=""
+
+# below working
+COMMANDS["screenrec"]="urxvt -hold -e sh -c '/home/dka/bin/screenrecord -s'"
+LABELS["screenrec"]=""
+
+COMMANDS["iv"]="'/home/dka/bin/run-geeqie'"
+LABELS["iv"]=""
+
+COMMANDS["open-pf"]="  '/home/dka/bin/rofi-scripts/open-pf'"
+LABELS["open-pf"]=""
+
+COMMANDS["close-pf"]="  '/home/dka/bin/rofi-scripts/close-pf'"
+LABELS["close-pf"]=""
+
+#COMMANDS["watchit"]="  '/home/dka/bin/rofi-scripts/watchit'"
+#LABELS["watchit"]=""
+
+
+#COMMANDS["address-bk"]=" urxvt -e '/home/dka/bin/rofi-scripts/address-bk'"
+#LABELS["address-bk"]=""
+
+COMMANDS["cherry-prv"]="cherrytree  '/home/dka/.cherry/cherryps.ctz'"
+LABELS["cherry-prv"]=""
+
+#COMMANDS["urlshorten"]="  '/home/dka/bin/rofi-scripts/url-shorten'"
+#LABELS["urlshorten"]=""
+
+COMMANDS["radio4"]="  urxvt -e '/home/dka/bin/radio4'"
+LABELS["radio4"]=""
+
+COMMANDS["notes"]=" '/home/delboy/.bin/note-scripts/tofinotes.sh' \"\${input}\""
+LABELS["notes"]=""
+
+COMMANDS["todo"]=" '/home/delboy/bin/rofi-scripts/todo.sh'"
+LABELS["todo"]="todo"
+
+COMMANDS["edit-todos"]="leafpad   '/home/dka/.rofi_todo'"
+LABELS["edit-todos"]="edit-todos"
+
+
+COMMANDS["suspend"]="rofi-suspend \"\${input}\""
+LABELS["suspend"]="suspend"
+
+#apps and progs both work the same
+COMMANDS["apps"]=" '/home/dka/bin/rofi-scripts/rofi-appschoose'"
+LABELS["apps"]=""
+
+COMMANDS["progs"]="  '/home/dka/bin/rofi-scripts/rofi-progs'"
+LABELS["progs"]=""
+
+#working
+COMMANDS["gmps"]="$browser https://www.google.nl/maps/place/\" \${input}\""
+LABELS["gmps"]="gmaps"
+
+COMMANDS["web"]="chromium --disk-cache-dir=/tmp/cache \"\${input}\""
+LABELS["web"]=""
+
+COMMANDS["gs"]="$browser  www.google.com/search?q=\  \" \${input}\""
+LABELS["gs"]="Web search"
+
+COMMANDS["movie"]="$browser http://www.imdb.com/find?q=\" \${input}\""
+LABELS["movie"]="movie search"
+
+#COMMANDS["inst"]="chromium --disk-cache-dir=/tmp/cache http://www.instructables.com/tag/?q=\" \${input}\""
+#LABELS["inst"]="instructables"
+
+COMMANDS["archwiki"]="$browser https://wiki.archlinux.org/index.php/\" \${input}\""
+LABELS["archwiki"]=""
+
+
+COMMANDS["stackexchange"]="chromium --disk-cache-dir=/tmp/cache http://stackexchange.com/search?q=\" \${input}\""
+LABELS["stackexchange"]=""
+
+COMMANDS["rofi-keys"]="leafpad  '/home/dka/bin/rofi-scripts/rofi-keybindings.txt'"
+LABELS["rofi-keys"]=""
+
+COMMANDS["edit-rofibangs"]="geany  '/home/delboy/bin/rofi-scripts/rofi-bangs'"
+LABELS["edit-rofibangs"]=""
+
+#COMMANDS["funny"]="leafpad  '/home/dka/text-files/funnysymbols.txt'"
+#LABELS["funny"]="funny symbols"
+
+COMMANDS["fsearch"]="fsearch"
+LABELS["fsearch"]=""
+
+COMMANDS["qutebrowser"]="qutebrowser"
+LABELS["qutebrowser"]="qutebrowser"
+
+
+COMMANDS["keepassx"]="keepassx "
+LABELS["keepassx"]=
+
+
+COMMANDS[".bin"]="pcmanfm -r '/home/delboy/bin'"
+LABELS[".bin"]=".bin"
+
+COMMANDS[".downloads"]="spacefm -r '/home/dka/Downloads'"
+LABELS[".downloads"]=".downloads"
+
+# WEB SITES but can type rb to use rofi-bookmarks script that has more in the list than these few
+COMMANDS["weer"]="chromium --disk-cache-dir=/tmp/cache http://www.buienradar.nl/weer/huizen/nl/2753468/3uurs"
+LABELS["weer"]=
+
+COMMANDS["wyt"]="$browser http://www.youtube.com"
+LABELS["wyt"]=
+
+
+COMMANDS["wbol"]="$browser http://www.boll.com"
+LABELS["wbol"]=
+
+COMMANDS["whotmail"]='chromium --disk-cache-dir=/tmp/cache www.hotmail.com'
+LABELS["whotmail"]=""
+#
+#COMMANDS[""]=""
+# LABELS[""]=""
+#####################################
+# putting a # in front of the ones that call scripts
+
+#for password retrieval	
+COMMANDS["#snippypw"]=" '/home/dka/bin/rofi-scripts/snippypw'"
+LABELS["#snippypw"]=""
+
+COMMANDS["#screenshot"]='/home/dka/bin/screenshot-scripts/myscreenshot.sh'
+LABELS["#screenshot"]="screenshot"
+
+COMMANDS["#editconfigs"]='/home/dka/bin/edit-configs-and-scripts'
+LABELS["#editconfigs"]="edit"
+
+COMMANDS["#mounttemple"]='echo 0downy | encfs -S /media/ElementsA/new-temple/.new-temple_encfs /media/ElementsA/templemount/'
+LABELS["#mounttemple"]="#mounttemple"
+
+COMMANDS["#unmounttemple"]='fusermount -u  /media/ElementsA/templemount'
+LABELS["#unmounttemple"]="#unmounttemple"
+
+COMMANDS["#hmsignin"]='sleep 5s;xdotool type 'elwoode';sleep 0.5s;xdotool key 132;xdotool type 'hotmail.co.uk';xdotool key Tab;xdotool type 'hotmailkered0';xdotool key "Return"'
+LABELS["#hmsignin"]="#hmsignin"
+
+
+
+################################################################################
+# do not edit below
+################################################################################
+
+##
+# GENERATE THE MENU
+##
+function print_menu()
+{
+    for key in ${!LABELS[@]}
+    do
+		echo "$key    ${LABELS}"
+     #   echo "$key    ${LABELS[$key]}"
+     # my top version just shows the first field in labels row, not two words side by side
+    done
+}
+##
+# pass menu to rofi.
+##
+function start()
+{
+    print_menu | rofi -dmenu -p "?=>" 
+}
+
+
+# Run the command you chose
+value="$(start)"
+
+# Split input.
+# grab upto first space.
+choice=${value%%\ *}
+# graph remainder, minus space.
+input=${value:$((${#choice}+1))}
+
+##
+# Cancelled? bail out
+##
+if test -z ${choice}
+then
+    exit
+fi
+
+# check if choice exists
+if test ${COMMANDS[$choice]+isset}
+then
+    # Execute the choice
+    eval echo "Executing: ${COMMANDS[$choice]}"
+    eval ${COMMANDS[$choice]}
+else
+	eval  $choice | rofi
+ # prefer my above version so I can use this same script to also launch apps like geany or leafpad etc (DK)	
+ #   echo "Unknown command: ${choice}" | rofi -dmenu -p "error"
+fi
